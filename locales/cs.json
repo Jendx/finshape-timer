@@ -1,0 +1,7 @@
+{
+  "__name__": "Časovač",
+  "__category__.actions": "Akce",
+  "interval": "Interval",
+  "onInterval": "Po intervalu",
+  "repeat": "Opakovat"
+}

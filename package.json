@@ -1,0 +1,65 @@
+{
+  "alfons": true,
+  "author": "Jan Bartovič",
+  "dependencies": {
+    "@alfons-app/pdk": "0.19.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@babel/preset-env": "^7.28.3",
+    "@fluentui/react-icons": "^2.0.310",
+    "react-native": "^0.81.4",
+    "react-native-web": "^0.21.1"
+  },
+  "devDependencies": {
+    "@alfons-app/eslint-config": "0.19.0",
+    "@alfons-app/sandbox": "0.19.0",
+    "@bory875/effects-timer": "link:",
+    "@jendx/finshape-effects-timer": "link:",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/react-native": "^13.3.3",
+    "@types/jest": "^29.5.14",
+    "@types/react": "19.1.1",
+    "@types/react-dom": "19.1.7",
+    "babel-plugin-module-resolver": "5.0.2",
+    "babel-preset-expo": "~54.0.3",
+    "jest": "^29.7.0",
+    "jest-expo": "^54.0.12",
+    "react": "19.1.0",
+    "react-test-renderer": "18.2.0",
+    "typescript": "~5.9.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@alfons-app"
+    ],
+    "root": true
+  },
+  "jest": {
+    "passWithNoTests": true,
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg|jsonpath-plus)"
+    ]
+  },
+  "license": "",
+  "name": "@jendx/finshape-effects-timer",
+  "peerDependencies": {
+    "react": "19.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "scope": "jendx"
+  },
+  "scripts": {
+    "lint": "eslint . --fix",
+    "sandbox": "sandbox",
+    "test": "jest --silent",
+    "test:watch": "jest --watchAll",
+    "typecheck": "tsc",
+    "version:patch": "pnpm version patch --git-tag-version=false",
+    "version:minor": "pnpm version minor --git-tag-version=false",
+    "version:major": "pnpm version major --git-tag-version=false"
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,7 @@
+{
+  "__name__": "Timer",
+  "__category__.actions": "Actions",
+  "interval": "Interval",
+  "onInterval": "On interval",
+  "repeat": "Repeat"
+}
