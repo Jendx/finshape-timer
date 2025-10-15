@@ -6,7 +6,7 @@ import { differenceInMilliseconds } from "date-fns";
 /**
  * While reset is true, the timer is being reset
  */
-const useReset = (reset: boolean, intervalRef: RefObject<number | null>) => {
+const useReset = (reset: boolean, intervalRef: RefObject<number | NodeJS.Timeout | null>) => {
   useEffect(() => {
     if (reset && intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -20,7 +20,7 @@ const useReset = (reset: boolean, intervalRef: RefObject<number | null>) => {
  */
 const usePause = (
   pause: boolean,
-  intervalRef: RefObject<number | null>,
+  intervalRef: RefObject<number | NodeJS.Timeout | null>,
   intervalStartTimeRef: RefObject<Date | null>,
   intervalRemainingTimeRef: RefObject<number | null>,
   onTimerEnd: () => void,
@@ -44,7 +44,7 @@ const usePause = (
 }
 
 const timerEffect: Effect<TimerProps> = ({ onInterval, interval, repeat, pause, reset }: TimerProps) => {
-  const intervalRef = useRef<number | null>(null);
+  const intervalRef = useRef<number | NodeJS.Timeout | null>(null);
   const intervalStartTimeRef = useRef<Date>(null);
   const intervalRemainingTimeRef = useRef<number>(null)
   const { getAction } = useContext(ActionContext);
@@ -58,7 +58,7 @@ const timerEffect: Effect<TimerProps> = ({ onInterval, interval, repeat, pause, 
   }
 
   const timerHook = () => {
-    intervalRef.current = window.setInterval(onTimerEnd, interval);
+    intervalRef.current = setInterval(onTimerEnd, interval);
     intervalStartTimeRef.current = new Date()
   
     return () => {
