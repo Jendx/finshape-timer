@@ -2,15 +2,6 @@
 
 This plugin provides a flexible and reusable timer mechanism that can trigger actions at specific intervals. It supports pause, reset, and repeat functionality, making it suitable for use cases like countdowns, recurring triggers, or simple scheduling logic within Alfons.
 
-## 🔧 Features
-
-- Trigger an action after a configurable time interval
-- Pause and resume the timer without losing progress
-- Reset the timer at any time
-- Optional repeat behavior for looping intervals
-
----
-
 ## 🧩 Plugin Configuration
 
 | Property      | Type     | Default | Description                                                                 |
@@ -54,3 +45,12 @@ When `reset` is enabled:
   "reset": false
 }
 ```
+
+## 🔧 Installation
+
++ pull the repo
++ instal PNPM
++ run `pnpm install & pnpm install ./ --save-dev`
++ run `pnpm sandbox`
+
+If `pnpm sandbox` fails try installing bun globaly `npm install bun -g`
