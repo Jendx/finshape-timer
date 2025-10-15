@@ -34,7 +34,7 @@ const usePause = (
     }
 
     if (!pause && intervalRemainingTimeRef.current) {
-      intervalRef.current = window.setInterval(onTimerEnd, intervalRemainingTimeRef.current);
+      intervalRef.current = setInterval(onTimerEnd, intervalRemainingTimeRef.current);
 
       // Reset the remaining time
       intervalRemainingTimeRef.current = null;
