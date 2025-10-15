@@ -32,20 +32,6 @@ When `reset` is enabled:
 - Any active timer is cleared immediately.
 - A new interval does **not** start automatically. You must trigger it again (e.g., via component re-render or external trigger).
 
----
-
-## 💡 Example Usage
-
-```json
-{
-  "interval": 5000,
-  "onInterval": "logMessage",
-  "repeat": true,
-  "pause": false,
-  "reset": false
-}
-```
-
 ## 🔧 Installation
 
 + pull the repo
