@@ -10,6 +10,13 @@ jest.mock("date-fns", () => ({
   differenceInMilliseconds: jest.fn(),
 }));
 
+const renderWrappedEffect = (getActionMock: jest.Mock<any, any, any>, WrapperComponent: () => null) => {
+  return render(
+    <ActionContext.Provider value={{ getAction: getActionMock, registerAction: jest.fn() }}>
+      <WrapperComponent />
+    </ActionContext.Provider>
+  );
+}
 
 // POC of tests
 describe("timerEffect", () => {
@@ -129,11 +136,3 @@ describe("timerEffect", () => {
     expect(mockAction).toHaveBeenCalledTimes(1);
   });
 });
-function renderWrappedEffect(getActionMock: jest.Mock<any, any, any>, WrapperComponent: () => null) {
-  return render(
-    <ActionContext.Provider value={{ getAction: getActionMock, registerAction: jest.fn() }}>
-      <WrapperComponent />
-    </ActionContext.Provider>
-  );
-}
-

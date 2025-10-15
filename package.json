@@ -63,5 +63,5 @@
     "version:minor": "pnpm version minor --git-tag-version=false",
     "version:major": "pnpm version major --git-tag-version=false"
   },
-  "version": "1.0.0"
+  "version": "0.1.0"
 }

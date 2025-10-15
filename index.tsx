@@ -3,6 +3,9 @@ import { RefObject, useContext, useEffect, useRef } from "react";
 import type { TimerProps } from "./editor";
 import { differenceInMilliseconds } from "date-fns";
 
+/**
+ * While reset is true, the timer is being reset
+ */
 const useReset = (reset: boolean, intervalRef: RefObject<NodeJS.Timeout | null>) => {
   useEffect(() => {
     if (reset && intervalRef.current) {
@@ -12,6 +15,9 @@ const useReset = (reset: boolean, intervalRef: RefObject<NodeJS.Timeout | null>)
   }, [reset]);
 }
 
+/**
+ * While pause is true, the timer is "paused", it's remaining time is stored ad will be used when resumed
+ */
 const usePause = (
   pause: boolean,
   intervalRef: RefObject<NodeJS.Timeout | null>,
