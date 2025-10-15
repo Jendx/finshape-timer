@@ -3,5 +3,8 @@
   "__category__.actions": "Actions",
   "interval": "Interval",
   "onInterval": "On interval",
-  "repeat": "Repeat"
+  "repeat": "Repeat",
+  "pauseButton": "Pause timer",
+  "resetButton": "Reset timer",
+  "__category__.control": "Timer Control"
 }

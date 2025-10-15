@@ -19,6 +19,16 @@ const Definition = {
       control: "Switch",
       label: "repeat",
     }),
+    pause: $.boolean().default(false).setupInspector({
+      control: "Switch",
+      category: "control",
+      label: "pauseButton",
+    }),
+    reset: $.boolean().default(false).setupInspector({
+      control: "Switch",
+      category: "control",
+      label: "resetButton",
+    })
   }),
   shouldAllowChild: () => () => false,
 } satisfies PluginDefinition;

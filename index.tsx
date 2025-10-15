@@ -1,26 +1,75 @@
 import { ActionContext, type Effect } from "@alfons-app/pdk";
-import { useContext, useEffect, useRef } from "react";
+import { RefObject, useContext, useEffect, useRef } from "react";
 import type { TimerProps } from "./editor";
+import { differenceInMilliseconds } from "date-fns";
 
-const timerEffect: Effect<TimerProps> = ({ onInterval, interval, repeat }: TimerProps) => {
+const useReset = (reset: boolean, intervalRef: RefObject<NodeJS.Timeout | null>) => {
+  useEffect(() => {
+    if (reset && intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+  }, [reset]);
+}
+
+const usePause = (
+  pause: boolean,
+  intervalRef: RefObject<NodeJS.Timeout | null>,
+  intervalStartTimeRef: RefObject<Date | null>,
+  intervalRemainingTimeRef: RefObject<number | null>,
+  onTimerEnd: () => void,
+  interval: number
+) => {
+  useEffect(() => {
+    if (pause && intervalRef.current && intervalStartTimeRef.current) {
+      clearInterval(intervalRef.current);
+      const elapsedTime = differenceInMilliseconds(new Date(), intervalStartTimeRef.current);
+      intervalRemainingTimeRef.current = interval - elapsedTime
+    }
+
+    if (!pause && intervalRemainingTimeRef.current) {
+      intervalRef.current = setInterval(onTimerEnd, intervalRemainingTimeRef.current);
+
+      // Reset the remaining time
+      intervalRemainingTimeRef.current = null;
+    }
+
+  }, [pause]);
+}
+
+const timerEffect: Effect<TimerProps> = ({ onInterval, interval, repeat, pause, reset }: TimerProps) => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalStartTimeRef = useRef<Date>(null);
+  const intervalRemainingTimeRef = useRef<number>(null)
   const { getAction } = useContext(ActionContext);
 
+  const onTimerEnd = () => {
+    getAction(onInterval?.__$ref)?.();
+
+    if (!repeat && intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+  }
+
   const timerHook = () => {
-    intervalRef.current = setInterval(() => {
-      getAction(onInterval?.__$ref)?.();
-
-      if (!repeat && intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    }, interval);
-
+    intervalRef.current = setInterval(onTimerEnd, interval);
+    intervalStartTimeRef.current = new Date()
+  
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
   };
+
+  useReset(reset, intervalRef);
+  usePause(
+    pause,
+    intervalRef,
+    intervalStartTimeRef,
+    intervalRemainingTimeRef,
+    onTimerEnd,
+    interval);
 
   useEffect(timerHook, [
     interval,

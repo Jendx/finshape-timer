@@ -3,5 +3,8 @@
   "__category__.actions": "Akce",
   "interval": "Interval",
   "onInterval": "Po intervalu",
-  "repeat": "Opakovat"
+  "repeat": "Opakovat",
+  "pauseButton": "Pozastavit",
+  "resetButton": "Obnovit časovač",
+  "__category__.control": "Ovládání časovače"
 }
