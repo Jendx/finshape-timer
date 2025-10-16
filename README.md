@@ -32,7 +32,15 @@ When `reset` is enabled:
 - Any active timer is cleared immediately.
 - A new interval does **not** start automatically. You must trigger it again (e.g., via component re-render or external trigger).
 
-## 🔧 Installation
+## 🚀 Installation
+
+### 1. Install via NPM
+
+```bash
+npm install @jendx/finshape-effects-timer
+```
+
+### 2. Local Development
 
 + pull the repo
 + instal PNPM
