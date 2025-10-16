@@ -48,3 +48,5 @@ npm install @jendx/finshape-effects-timer
 + run `pnpm sandbox`
 
 If `pnpm sandbox` fails try installing bun globaly `npm install bun -g`
+
+<img width="1918" height="916" alt="image" src="https://github.com/user-attachments/assets/dc7e679b-df0b-4d48-8608-c69f3c0d6fa6" />
